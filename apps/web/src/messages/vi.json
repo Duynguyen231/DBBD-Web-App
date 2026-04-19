@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "about_history": "Lịch sử hình thành",
+    "about_mission": "Sứ mệnh - Tầm nhìn",
+    "about_org": "Cơ cấu tổ chức",
+    "about_leaders": "Đội ngũ lãnh đạo",
+    "about_profile": "Hồ sơ doanh nghiệp",
+    "services": "Lĩnh vực hoạt động",
+    "products": "Sản phẩm",
+    "projects": "Công trình",
+    "news": "Tin tức",
+    "recruitment": "Tuyển dụng",
+    "contact": "Liên hệ"
+  },
+  "home": {
+    "hero_subtitle": "Xây dựng công trình cầu đường chuyên nghiệp",
+    "about_title": "Giới thiệu công ty",
+    "about_desc": "CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH là đơn vị hàng đầu trong lĩnh vực quản lý, bảo trì và xây dựng công trình giao thông đường bộ tại tỉnh Bình Định.",
+    "services_title": "Lĩnh vực hoạt động",
+    "projects_title": "Công trình tiêu biểu",
+    "news_title": "Tin tức mới nhất",
+    "partners_title": "Đối tác",
+    "stats_years": "Năm kinh nghiệm",
+    "stats_projects": "Công trình hoàn thành",
+    "stats_km": "Km đường quản lý",
+    "stats_employees": "Cán bộ công nhân viên",
+    "contact_cta": "Liên hệ với chúng tôi",
+    "contact_cta_desc": "Hãy để chúng tôi đồng hành cùng bạn trong mọi dự án",
+    "contact_btn": "Liên hệ ngay",
+    "view_more": "Xem thêm",
+    "view_all": "Xem tất cả"
+  },
+  "footer": {
+    "company": "CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH",
+    "address_label": "Địa chỉ",
+    "phone_label": "Điện thoại",
+    "fax_label": "Fax",
+    "email_label": "Email",
+    "links_title": "Liên kết nhanh",
+    "news_title": "Tin tức",
+    "copyright": "© 2026 Đường Bộ Bình Định. Bảo lưu mọi quyền."
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "name": "Họ và tên",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "subject": "Tiêu đề",
+    "message": "Nội dung",
+    "send": "Gửi tin nhắn",
+    "success": "Tin nhắn của bạn đã được gửi thành công!",
+    "error": "Có lỗi xảy ra. Vui lòng thử lại."
+  },
+  "projects": {
+    "title": "Công trình",
+    "status_ongoing": "Đang thi công",
+    "status_completed": "Hoàn thành",
+    "status_upcoming": "Sắp triển khai",
+    "all": "Tất cả",
+    "location": "Địa điểm"
+  },
+  "news": {
+    "title": "Tin tức",
+    "read_more": "Đọc thêm"
+  },
+  "recruitment": {
+    "title": "Tuyển dụng",
+    "apply": "Ứng tuyển",
+    "deadline": "Hạn nộp hồ sơ",
+    "location": "Địa điểm",
+    "open": "Đang tuyển",
+    "closed": "Đã đóng"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Có lỗi xảy ra",
+    "back": "Quay lại",
+    "share": "Chia sẻ"
+  }
+}

@@ -1,0 +1,5 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#4a6741"/>
+  <text x="400" y="280" text-anchor="middle" fill="white" font-size="36" font-family="Arial, sans-serif" font-weight="bold">Be tong nhua</text>
+  <text x="400" y="330" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="20" font-family="Arial, sans-serif">Duong Bo Binh Dinh</text>
+</svg>
