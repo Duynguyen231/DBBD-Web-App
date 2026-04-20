@@ -8,10 +8,9 @@ import { ApiTags, ApiBearerAuth, ApiConsumes } from '@nestjs/swagger'
 import { PrismaService } from '../prisma/prisma.service'
 import { createClient } from '@supabase/supabase-js'
 
-// Initialize Supabase client
 const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!
+  process.env.SUPABASE_URL || '',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || '',  // ← correct
 )
 
 @ApiTags('Media')
@@ -84,7 +83,6 @@ export class MediaController {
     
     if (media) {
       // Extract filename from Supabase URL
-      // URL format: https://abc.supabase.co/storage/v1/object/public/media/filename.jpg
       const urlParts = media.url.split('/')
       const fileName = urlParts[urlParts.length - 1]
 
