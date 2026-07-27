@@ -61,7 +61,7 @@ export default function Header() {
       <div className="bg-[var(--primary-dark)] text-white/90 text-xs">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-8">
           <div className="hidden sm:flex items-center gap-4">
-            <span className="flex items-center gap-1.5"><Phone className="w-3 h-3" /> 0256 3 822 456</span>
+            <span className="flex items-center gap-1.5"><Phone className="w-3 h-3" /> 091 406 1804</span>
             <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> info@duongbobinhdinh.vn</span>
           </div>
           <div className="flex items-center gap-2 ml-auto">

@@ -363,8 +363,8 @@ export default async function HomePage() {
             <Link href={lp('/lien-he')} className="inline-flex items-center justify-center gap-2 bg-white text-[var(--primary)] font-bold px-8 py-4 rounded-xl hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl">
               {t('contact_btn')} <ArrowRight className="w-4 h-4" />
             </Link>
-            <a href="tel:02563822456" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition-all">
-              0256 3 822 456
+            <a href="tel:0914061804" className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 font-bold px-8 py-4 rounded-xl hover:bg-white/20 transition-all">
+              091 406 1804
             </a>
           </div>
         </div>

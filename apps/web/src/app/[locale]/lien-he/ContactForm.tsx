@@ -65,7 +65,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <div className="font-medium text-gray-900 text-sm">Điện thoại</div>
-                <div className="text-sm text-gray-500">0256 3 822 456</div>
+                <div className="text-sm text-gray-500">091 406 1804</div>
               </div>
             </div>
             <div className="flex gap-3">
