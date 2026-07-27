@@ -45,7 +45,7 @@ export default function Footer() {
                 </div>
                 <div className="leading-relaxed">
                   <div>Lô OTM12-13 Khu đô thị Long Vân, P. Quy Nhơn Bắc, Tỉnh Gia Lai</div>
-                  <div className="text-xs text-gray-500 mt-1">Mã số thuế: 4001234567</div>
+                  <div className="text-xs text-gray-500 mt-1">Mã số thuế: 4100259388</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -62,7 +62,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="flex gap-2 mt-6">
-              <a href="https://www.facebook.com/duongbobinhdinh" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-[#1877F2] rounded-xl flex items-center justify-center transition-all duration-300" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61575734943612" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-[#1877F2] rounded-xl flex items-center justify-center transition-all duration-300" aria-label="Facebook">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 1.092.07 1.374.14v3.323c-.149-.016-.408-.024-.732-.024-1.04 0-1.442.394-1.442 1.42v2.7h3.879l-.666 3.666H14.16v8.174C19.395 22.84 23 18.862 23 14.044 23 8.508 18.523 4 13 4S3 8.508 3 14.044c0 4.124 2.632 7.633 6.101 9.647z"/></svg>
               </a>
               <a href="https://zalo.me/duongbobinhdinh" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 hover:bg-[#0068FF] rounded-xl flex items-center justify-center transition-all duration-300" aria-label="Zalo">
