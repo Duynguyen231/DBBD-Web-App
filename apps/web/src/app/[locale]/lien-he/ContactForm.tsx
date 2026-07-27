@@ -74,7 +74,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <div className="font-medium text-gray-900 text-sm">Email</div>
-                <div className="text-sm text-gray-500">info@duongbobinhdinh.vn</div>
+                <div className="text-sm text-gray-500">duongbobinhdinh@gmail.com</div>
               </div>
             </div>
             <div className="flex gap-3">

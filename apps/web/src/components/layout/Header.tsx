@@ -62,7 +62,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-8">
           <div className="hidden sm:flex items-center gap-4">
             <span className="flex items-center gap-1.5"><Phone className="w-3 h-3" /> 091 406 1804</span>
-            <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> info@duongbobinhdinh.vn</span>
+            <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> duongbobinhdinh@gmail.com</span>
           </div>
           <div className="flex items-center gap-2 ml-auto">
             <button onClick={() => switchLocale('vi')} className={cn('px-2 py-0.5 rounded text-xs transition-colors', locale === 'vi' ? 'bg-white/20 font-semibold' : 'hover:bg-white/10')}>Tiếng Việt</button>

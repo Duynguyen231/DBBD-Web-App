@@ -58,7 +58,7 @@ export default function Footer() {
                 <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4 text-[var(--primary-light)]" />
                 </div>
-                <span>info@duongbobinhdinh.vn</span>
+                <span>duongbobinhdinh@gmail.com</span>
               </div>
             </div>
             <div className="flex gap-2 mt-6">
