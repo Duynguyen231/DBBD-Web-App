@@ -3,7 +3,9 @@ import createNextIntlPlugin from 'next-intl/plugin'
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
-type RemotePattern = NonNullable<NextConfig['images']>['remotePatterns'][number]
+type NextImagesConfig = NonNullable<NextConfig['images']>
+type RemotePatternsArray = NonNullable<NextImagesConfig['remotePatterns']>
+type RemotePattern = RemotePatternsArray[number]
 
 function toRemotePattern(urlValue: string): RemotePattern | null {
   try {
