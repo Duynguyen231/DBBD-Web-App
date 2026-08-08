@@ -1,0 +1,6 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#DB2777" opacity="0.15"/>
+  <rect x="50" y="50" width="700" height="300" rx="20" fill="#DB2777" opacity="0.25"/>
+  <text x="400" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" font-weight="bold" fill="#DB2777">Tin tức 7</text>
+  <text x="400" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" fill="#DB2777" opacity="0.8">Bằng khen</text>
+</svg>

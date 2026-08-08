@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "about_history": "History",
+    "about_mission": "Mission & Vision",
+    "about_org": "Organization",
+    "about_leaders": "Leadership",
+    "about_profile": "Company Profile",
+    "services": "Services",
+    "products": "Products",
+    "projects": "Projects",
+    "news": "News",
+    "recruitment": "Careers",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero_subtitle": "Professional Road Management & Construction",
+    "about_title": "About Us",
+    "about_desc": "BINH DINH ROAD MANAGEMENT AND CONSTRUCTION JSC is a leading company in road maintenance, management and construction in Binh Dinh province.",
+    "services_title": "Our Services",
+    "projects_title": "Featured Projects",
+    "news_title": "Latest News",
+    "partners_title": "Partners",
+    "stats_years": "Years of Experience",
+    "stats_projects": "Completed Projects",
+    "stats_km": "Km Roads Managed",
+    "stats_employees": "Employees",
+    "contact_cta": "Contact Us",
+    "contact_cta_desc": "Let us accompany you in every project",
+    "contact_btn": "Get in Touch",
+    "view_more": "View More",
+    "view_all": "View All"
+  },
+  "footer": {
+    "company": "BINH DINH ROAD MANAGEMENT AND CONSTRUCTION JSC",
+    "address_label": "Address",
+    "phone_label": "Phone",
+    "fax_label": "Fax",
+    "email_label": "Email",
+    "links_title": "Quick Links",
+    "news_title": "News",
+    "copyright": "© 2026 Duong Bo Binh Dinh. All rights reserved."
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "success": "Your message has been sent successfully!",
+    "error": "An error occurred. Please try again."
+  },
+  "projects": {
+    "title": "Projects",
+    "status_ongoing": "Ongoing",
+    "status_completed": "Completed",
+    "status_upcoming": "Upcoming",
+    "all": "All",
+    "location": "Location"
+  },
+  "news": {
+    "title": "News",
+    "read_more": "Read More"
+  },
+  "recruitment": {
+    "title": "Careers",
+    "apply": "Apply Now",
+    "deadline": "Application Deadline",
+    "location": "Location",
+    "open": "Open",
+    "closed": "Closed"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "back": "Back",
+    "share": "Share"
+  }
+}

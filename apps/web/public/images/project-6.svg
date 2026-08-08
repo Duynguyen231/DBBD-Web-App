@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#7c3aed"/>
+  <rect x="50" y="350" width="700" height="8" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <rect x="50" y="370" width="500" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+  <text x="400" y="220" text-anchor="middle" fill="white" font-size="36" font-family="Arial, sans-serif" font-weight="bold">Duong noi thi</text>
+  <text x="400" y="270" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="18" font-family="Arial, sans-serif">Duong Bo Binh Dinh</text>
+</svg>

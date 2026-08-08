@@ -1,0 +1,185 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Users ───────────────────────────────────────────────────────────────────
+
+enum UserRole {
+  ADMIN
+  SUPER_ADMIN
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      UserRole @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── News ────────────────────────────────────────────────────────────────────
+
+model NewsCategory {
+  id     Int    @id @default(autoincrement())
+  slug   String @unique
+  nameVi String
+  nameEn String
+  news   News[]
+}
+
+model News {
+  id          Int           @id @default(autoincrement())
+  slug        String        @unique
+  titleVi     String
+  titleEn     String
+  excerptVi   String        @db.Text
+  excerptEn   String        @db.Text
+  contentVi   String        @db.Text
+  contentEn   String        @db.Text
+  thumbnail   String?
+  category    NewsCategory? @relation(fields: [categoryId], references: [id])
+  categoryId  Int?
+  publishedAt DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+// ─── Projects ────────────────────────────────────────────────────────────────
+
+enum ProjectStatus {
+  ONGOING
+  COMPLETED
+  UPCOMING
+}
+
+model Project {
+  id        Int           @id @default(autoincrement())
+  slug      String        @unique
+  titleVi   String
+  titleEn   String
+  descVi    String        @db.Text
+  descEn    String        @db.Text
+  location  String
+  status    ProjectStatus @default(ONGOING)
+  images    String[]
+  startDate DateTime?
+  endDate   DateTime?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+// ─── Services ────────────────────────────────────────────────────────────────
+
+model Service {
+  id      Int     @id @default(autoincrement())
+  titleVi String
+  titleEn String
+  descVi  String  @db.Text
+  descEn  String  @db.Text
+  icon    String?
+  image   String?
+  order   Int     @default(0)
+}
+
+// ─── Products ────────────────────────────────────────────────────────────────
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  titleVi   String
+  titleEn   String
+  descVi    String   @db.Text
+  descEn    String   @db.Text
+  images    String[]
+  category  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Jobs ────────────────────────────────────────────────────────────────────
+
+enum JobStatus {
+  OPEN
+  CLOSED
+}
+
+model Job {
+  id             Int       @id @default(autoincrement())
+  slug           String    @unique
+  titleVi        String
+  titleEn        String
+  descVi         String    @db.Text
+  descEn         String    @db.Text
+  requirementsVi String    @db.Text
+  requirementsEn String    @db.Text
+  location       String
+  deadline       DateTime?
+  status         JobStatus @default(OPEN)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+// ─── Banners ─────────────────────────────────────────────────────────────────
+
+model Banner {
+  id      Int     @id @default(autoincrement())
+  image   String
+  titleVi String?
+  titleEn String?
+  link    String?
+  order   Int     @default(0)
+  page    String  @default("home")
+}
+
+// ─── Partners ────────────────────────────────────────────────────────────────
+
+model Partner {
+  id      Int     @id @default(autoincrement())
+  name    String
+  logo    String
+  website String?
+  order   Int     @default(0)
+}
+
+// ─── Contact Submissions ─────────────────────────────────────────────────────
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// ─── Media ───────────────────────────────────────────────────────────────────
+
+model Media {
+  id        Int      @id @default(autoincrement())
+  filename  String
+  url       String
+  mimeType  String
+  size      Int
+  createdAt DateTime @default(now())
+}
+
+// ─── Site Settings ────────────────────────────────────────────────────────────
+
+model SiteSetting {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String @db.Text
+}
