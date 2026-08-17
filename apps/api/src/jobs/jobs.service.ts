@@ -31,10 +31,23 @@ export class JobsService {
     return j
   }
 
+  // async create(dto: CreateJobDto) {
+  //   const slug = await this.generateSlug(dto.titleVi)
+  //   return this.prisma.job.create({ data: { ...dto, slug } })
+  // }
+
   async create(dto: CreateJobDto) {
     const slug = await this.generateSlug(dto.titleVi)
-    return this.prisma.job.create({ data: { ...dto, slug } })
+
+    return this.prisma.job.create({
+      data: {
+        ...dto,
+        deadline: dto.deadline ? new Date(`${dto.deadline}T00:00:00Z`) : null,
+        slug,
+      },
+    })
   }
+
 
   async update(id: number, dto: UpdateJobDto) {
     await this.findById(id)
