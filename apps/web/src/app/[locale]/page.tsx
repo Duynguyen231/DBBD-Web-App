@@ -34,7 +34,7 @@ const SERVICE_ICONS = [Building2, Truck, HardHat, Shield]
 
 const MOCK_SERVICES = [
   { id: 1, image: '/images/1-Trạm trộn Bình Đê Km1125+00 QL1 tỉnh Gia Lai.png', titleVi: 'Xây dựng công trình giao thông', titleEn: 'Transport Construction', descVi: 'Thi công xây dựng các công trình đường bộ, cầu, cống và hạ tầng giao thông theo tiêu chuẩn quốc gia.', descEn: 'Construction of roads, bridges, culverts and transport infrastructure.' },
-  { id: 2, image: '/images/1-TRẠM TRỘN BÌNH ĐÊ.png', titleVi: 'Quản lý bảo trì đường bộ', titleEn: 'Road Maintenance Management', descVi: 'Quản lý, bảo trì hệ thống quốc lộ, tỉnh lộ và đường giao thông nông thôn trên địa bàn tỉnh Bình Định.', descEn: 'Managing and maintaining national, provincial and rural road systems in Binh Dinh province.' },
+  { id: 2, image: '/images/1-TRẠM TRỘN BÌNH ĐÊ.png', titleVi: 'Quản lý bảo trì đường bộ', titleEn: 'Road Maintenance Management', descVi: 'Quản lý, bảo trì hệ thống quốc lộ, tỉnh lộ và đường địa phương trên địa bàn tỉnh Gia Lai.', descEn: 'Managing and maintaining national, provincial and local road systems in Gia Lai province.' },
   { id: 3, image: '/images/1-Phòng làm việc kĩ thuật.jpg', titleVi: 'Sản xuất vật liệu xây dựng', titleEn: 'Construction Materials', descVi: 'Sản xuất và cung ứng vật liệu xây dựng: nhựa đường, bê tông, đá xây dựng phục vụ thi công công trình.', descEn: 'Production and supply of construction materials.' },
   { id: 4, image: '/images/1-Phòng làm việc kế toán.JPG', titleVi: 'Cho thuê máy móc, thiết bị thi công', titleEn: 'Construction Equipment Rental', descVi: 'Cho thuê các loại máy móc, thiết bị thi công đường bộ, cầu cống phục vụ các dự án xây dựng hạ tầng.', descEn: 'Rental of road and bridge construction machinery and equipment for infrastructure projects.' },
 ]
@@ -80,7 +80,7 @@ export default async function HomePage() {
                 <span className="text-[var(--primary)] font-semibold text-sm uppercase tracking-[0.15em]">{t('about_title')}</span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                Vì sự phát triển hạ tầng giao thông <span className="text-[var(--primary)]">Bình Định</span>
+                Vì sự phát triển hạ tầng giao thông <span className="text-[var(--primary)]">Gia Lai</span>
               </h2>
               <p className="text-gray-500 leading-relaxed mb-8 text-[15px]">
                 {t('about_desc')}
@@ -89,8 +89,8 @@ export default async function HomePage() {
                 {[
                   { value: '30+', label: t('stats_years') },
                   { value: '500+', label: t('stats_projects') },
-                  { value: '1200', label: t('stats_km') },
-                  { value: '400+', label: t('stats_employees') },
+                  { value: '170', label: t('stats_km') },
+                  { value: '200+', label: t('stats_employees') },
                 ].map((s) => (
                   <div key={s.label} className="border-l-[3px] border-[var(--primary)] pl-4 py-1">
                     <div className="text-2xl font-bold text-gray-900">{s.value}</div>

@@ -6,8 +6,8 @@ import { Clock, FolderOpen, Route, Users } from 'lucide-react'
 const STATS = [
   { labelKey: 'stats_years', value: 30, suffix: '+', Icon: Clock },
   { labelKey: 'stats_projects', value: 500, suffix: '+', Icon: FolderOpen },
-  { labelKey: 'stats_km', value: 1200, suffix: '', Icon: Route },
-  { labelKey: 'stats_employees', value: 800, suffix: '+', Icon: Users },
+  { labelKey: 'stats_km', value: 170, suffix: '', Icon: Route },
+  { labelKey: 'stats_employees', value: 200, suffix: '+', Icon: Users },
 ]
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {

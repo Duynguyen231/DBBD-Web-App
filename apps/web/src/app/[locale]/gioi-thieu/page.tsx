@@ -53,8 +53,11 @@ export default async function AboutPage() {
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t('about')}</h1>
           <p className="text-lg text-blue-100 max-w-2xl">
             {isVi 
-              ? 'Tìm hiểu về lịch sử, sứ mệnh, tầm nhìn và cơ cấu tổ chức của Công ty TNHH MTV Đường Bộ Bình Định' 
-              : 'Learn about the history, mission, vision and organizational structure of Binh Dinh Road Company'}
+              ? 'Tìm hiểu về lịch sử, sứ mệnh, tầm nhìn và cơ cấu tổ chức của CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH' 
+              : 'Learn about the history, mission, vision and organizational structure of Gia Lai Road Management & Construction Company'}
+          </p>
+          <p className="text-base text-blue-100/90 max-w-2xl mt-4">
+            {isVi ? 'Công ty hiện có 2 trạm trộn: Trạm Bình Đê và Trạm Nhơn Hòa.' : 'The company currently operates 2 concrete mixing plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
           </p>
         </div>
       </div>
@@ -105,6 +108,9 @@ export default async function AboutPage() {
               {isVi 
                 ? 'Khám phá môi trường làm việc chuyên nghiệp và cơ sở vật chất hiện đại của chúng tôi'
                 : 'Explore our professional work environment and modern facilities'}
+            </p>
+            <p className="text-gray-600 max-w-3xl mx-auto mt-4">
+              {isVi ? 'Công ty hiện có 2 trạm trộn: Trạm Bình Đê và Trạm Nhơn Hòa.' : 'The company currently operates 2 concrete mixing plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
             </p>
           </div>
 
@@ -177,13 +183,13 @@ export default async function AboutPage() {
             <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
               <img 
                 src="/images/1-Phòng làm việc kế toán.JPG" 
-                alt="Phòng kế toán" 
+                alt="Phòng làm việc" 
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <h3 className="font-bold">
-                  {isVi ? 'Phòng kế toán' : 'Accounting Department'}
+                  {isVi ? 'Phòng làm việc' : 'Office'}
                 </h3>
               </div>
             </div>
