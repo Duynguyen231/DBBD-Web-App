@@ -121,8 +121,121 @@ export default async function AboutPage() {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> */}
             {/* Large Featured Image - Mixing Station */}
+            {/* <div className="lg:col-span-2 lg:row-span-2 group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/1-TRẠM TRỘN BÌNH ĐÊ.png" 
+                alt="Trạm trộn Bình Đê" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h3 className="text-xl font-bold mb-2">
+                  {isVi ? 'Trạm trộn Bình Đê' : 'Binh De Mixing Station'}
+                </h3>
+                <p className="text-sm text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  {isVi ? 'Cơ sở sản xuất vật liệu xây dựng hiện đại' : 'Modern construction materials production facility'}
+                </p>
+              </div>
+            </div> */}
+
+            {/* Conference Hall */}
+            {/* <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/1-Hội trường công ty.JPG" 
+                alt="Hội trường công ty" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">
+                  {isVi ? 'Hội trường công ty' : 'Conference Hall'}
+                </h3>
+              </div>
+            </div> */}
+
+            {/* Meeting Room */}
+            {/* <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/1-Họp giao ban.JPG" 
+                alt="Phòng họp giao ban" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">
+                  {isVi ? 'Phòng họp giao ban' : 'Meeting Room'}
+                </h3>
+              </div>
+            </div> */}
+
+            {/* Achievements 1 */}
+            {/* <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/1-Thành tích công ty.JPG" 
+                alt="Thành tích công ty" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">
+                  {isVi ? 'Thành tích & Giải thưởng' : 'Achievements & Awards'}
+                </h3>
+              </div>
+            </div> */}
+
+            {/* Accounting Office */}
+            {/* <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/1-Phòng làm việc kế toán.JPG" 
+                alt="Phòng làm việc" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">
+                  {isVi ? 'Phòng làm việc' : 'Office'}
+                </h3>
+              </div>
+            </div> */}
+
+            {/* Director Signing */}
+            {/* <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/ban-lanh-dao.png" 
+                alt="Giám đốc kí duyệt" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">
+                  {isVi ? 'Ban lãnh đạo' : 'Management'}
+                </h3>
+              </div>
+            </div> */}
+
+            {/* Achievements 2 */}
+            {/* <div className="lg:col-span-2 group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/1-Thành tích công ty 2.JPG" 
+                alt="Bằng khen & Chứng nhận" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">
+                  {isVi ? 'Bằng khen & Chứng nhận' : 'Certificates & Recognition'}
+                </h3>
+              </div>
+            </div> */}
+          {/* </div> */}
+
+
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {/* Large Featured Image - Bình Đê Station */}
             <div className="lg:col-span-2 lg:row-span-2 group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
               <img 
                 src="/images/1-TRẠM TRỘN BÌNH ĐÊ.png" 
@@ -140,6 +253,24 @@ export default async function AboutPage() {
               </div>
             </div>
 
+            {/* Featured: Nhơn Hòa Station (col 3, tall) */}
+            <div className="lg:row-span-2 group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/tram-tron-nhon-hoa.png" 
+                alt="Trạm trộn Nhơn Hòa" 
+                className="w-full h-full min-h-[300px] object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h3 className="text-xl font-bold mb-2">
+                  {isVi ? 'Trạm trộn Nhơn Hòa' : 'Nhon Hoa Mixing Station'}
+                </h3>
+                <p className="text-sm text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  {isVi ? 'Trạm trộn bê tông nhựa nóng công suất lớn' : 'High-capacity hot mix asphalt plant'}
+                </p>
+              </div>
+            </div>
+
             {/* Conference Hall */}
             <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
               <img 
@@ -149,9 +280,7 @@ export default async function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">
-                  {isVi ? 'Hội trường công ty' : 'Conference Hall'}
-                </h3>
+                <h3 className="font-bold">{isVi ? 'Hội trường công ty' : 'Conference Hall'}</h3>
               </div>
             </div>
 
@@ -164,9 +293,7 @@ export default async function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">
-                  {isVi ? 'Phòng họp giao ban' : 'Meeting Room'}
-                </h3>
+                <h3 className="font-bold">{isVi ? 'Phòng họp giao ban' : 'Meeting Room'}</h3>
               </div>
             </div>
 
@@ -179,9 +306,7 @@ export default async function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">
-                  {isVi ? 'Thành tích & Giải thưởng' : 'Achievements & Awards'}
-                </h3>
+                <h3 className="font-bold">{isVi ? 'Thành tích & Giải thưởng' : 'Achievements & Awards'}</h3>
               </div>
             </div>
 
@@ -194,9 +319,7 @@ export default async function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">
-                  {isVi ? 'Phòng làm việc' : 'Office'}
-                </h3>
+                <h3 className="font-bold">{isVi ? 'Phòng làm việc' : 'Office'}</h3>
               </div>
             </div>
 
@@ -209,14 +332,12 @@ export default async function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">
-                  {isVi ? 'Ban lãnh đạo' : 'Management'}
-                </h3>
+                <h3 className="font-bold">{isVi ? 'Ban lãnh đạo' : 'Management'}</h3>
               </div>
             </div>
 
             {/* Achievements 2 */}
-            <div className="lg:col-span-2 group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
               <img 
                 src="/images/1-Thành tích công ty 2.JPG" 
                 alt="Bằng khen & Chứng nhận" 
@@ -224,14 +345,19 @@ export default async function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">
-                  {isVi ? 'Bằng khen & Chứng nhận' : 'Certificates & Recognition'}
-                </h3>
+                <h3 className="font-bold">{isVi ? 'Bằng khen & Chứng nhận' : 'Certificates & Recognition'}</h3>
               </div>
             </div>
           </div>
+
+          
+      
         </div>
       </section>
+
+
+
+
 
       {/* Featured Projects Section */}
       <section className="py-20 bg-white">
