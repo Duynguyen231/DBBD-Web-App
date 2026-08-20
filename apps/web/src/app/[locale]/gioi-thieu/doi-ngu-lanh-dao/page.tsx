@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from "next/image";
 
 export const metadata: Metadata = { title: 'Đội ngũ lãnh đạo | Đường Bộ Bình Định' }
 
@@ -29,7 +30,7 @@ export default function LeadersPage() {
         </p>
       </header>
 
-      <div className="bg-white border border-gray-100 rounded-3xl shadow-sm p-6 md:p-10">
+      {/* <div className="bg-white border border-gray-100 rounded-3xl shadow-sm p-6 md:p-10">
         <div className="md:flex md:items-center md:gap-8">
           <div className="flex-1">
             <h2 className="text-2xl font-bold text-gray-900">Người đại diện pháp luật</h2>
@@ -47,7 +48,40 @@ export default function LeadersPage() {
             <div className="text-sm text-[var(--primary)] font-medium">Giám đốc / Legal Representative</div>
           </div>
         </div>
+      </div> */}
+
+
+      <div className="bg-white border border-gray-100 rounded-3xl shadow-sm p-6 md:p-10">
+        <div className="md:flex md:items-center md:gap-8">
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold text-gray-900">Người đại diện pháp luật</h2>
+            <p className="mt-4 text-gray-600 leading-relaxed">
+              Bà <span className="font-semibold text-gray-900">Đoàn Thị Minh Thọ</span> giữ chức Giám đốc, chịu trách nhiệm điều hành mọi hoạt động kinh doanh,
+              kỹ thuật và trực tiếp quản lý các dự án thi công, duy tu đường bộ. Bà đồng thời đại diện công ty ký kết hợp đồng, làm việc với
+              cơ quan quản lý nhà nước và phối hợp với các chủ đầu tư.
+            </p>
+          </div>
+          <div className="mt-6 md:mt-0 md:w-72 bg-[var(--primary-50)] rounded-2xl p-6 text-center">
+            <div className="w-20 h-20 mx-auto rounded-full overflow-hidden">
+              <Image
+                src="/images/doan-thi-minh-tho.png"
+                alt="Đoàn Thị Minh Thọ"
+                width={80}
+                height={80}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="mt-4 font-semibold text-gray-900">
+              Đoàn Thị Minh Thọ
+            </div>
+            <div className="text-sm text-[var(--primary)] font-medium">
+              Giám đốc / Legal Representative
+            </div>
+          </div>
+        </div>
       </div>
+
+
 
       <section>
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Nguyên tắc quản trị</h2>

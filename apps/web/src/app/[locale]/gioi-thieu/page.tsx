@@ -52,12 +52,18 @@ export default async function AboutPage() {
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t('about')}</h1>
           <p className="text-lg text-blue-100 max-w-2xl">
-            {isVi 
-              ? 'Tìm hiểu về lịch sử, sứ mệnh, tầm nhìn và cơ cấu tổ chức của CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH' 
-              : 'Learn about the history, mission, vision and organizational structure of Gia Lai Road Management & Construction Company'}
+            {isVi ? (
+              <>
+                Tìm hiểu về lịch sử, sứ mệnh, tầm nhìn và cơ cấu tổ chức của
+                <br />
+                CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH
+              </>
+            ) : (
+              'Learn about the history, mission, vision and organizational structure of Gia Lai Road Management & Construction Company'
+            )}
           </p>
           <p className="text-base text-blue-100/90 max-w-2xl mt-4">
-            {isVi ? 'Công ty hiện có 2 trạm trộn: Trạm Bình Đê và Trạm Nhơn Hòa.' : 'The company currently operates 2 concrete mixing plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
+            {isVi ? 'Công ty hiện có 2 trạm trộn bê tông nhựa nóng: trạm trộn Bình Đê và trạm trộn Nhơn Hòa.' : 'The company currently operates 2 hot mix asphalt plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
           </p>
         </div>
       </div>
@@ -110,7 +116,7 @@ export default async function AboutPage() {
                 : 'Explore our professional work environment and modern facilities'}
             </p>
             <p className="text-gray-600 max-w-3xl mx-auto mt-4">
-              {isVi ? 'Công ty hiện có 2 trạm trộn: Trạm Bình Đê và Trạm Nhơn Hòa.' : 'The company currently operates 2 concrete mixing plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
+              {isVi ? 'Công ty hiện có 2 trạm trộn bê tông nhựa nóng: trạm trộn Bình Đê và trạm trộn Nhơn Hòa.' : 'The company currently operates 2 hot mix asphalt plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
             </p>
           </div>
 

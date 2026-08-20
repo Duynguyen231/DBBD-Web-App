@@ -104,18 +104,40 @@ export default async function HomePage() {
             </div>
             <div className="relative hidden lg:block">
               <div className="grid grid-cols-2 gap-4">
+                
+                {/* <div className="space-y-4">
+                  <div className="h-52 rounded-2xl overflow-hidden relative">
+                    <img src="/images/1-TRẠM TRỘN BÌNH ĐÊ.png" alt="Trạm trộn Bình Đê" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-[var(--primary)]/20" />
+                  </div> */}
+
+
+                  {/* <div className="h-36 bg-[var(--primary-50)] rounded-2xl flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-[var(--primary)]">30+</div>
+                      <div className="text-sm text-[var(--primary-dark)] font-medium">{isVi ? 'Năm kinh nghiệm' : 'Years of experience'}</div>
+                    </div>
+                  </div> */}
+
+                  {/* <div className="h-52 rounded-2xl overflow-hidden relative">
+                    <img src="/images/duong-be-tong-nhua.png" alt="Đường bê tông nhựa" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-[var(--primary)]/20" />
+                  </div>
+                </div> */}
+
+
                 <div className="space-y-4">
                   <div className="h-52 rounded-2xl overflow-hidden relative">
                     <img src="/images/1-TRẠM TRỘN BÌNH ĐÊ.png" alt="Trạm trộn Bình Đê" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-[var(--primary)]/20" />
                   </div>
-                  <div className="h-36 bg-[var(--primary-50)] rounded-2xl flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-[var(--primary)]">30+</div>
-                      <div className="text-sm text-[var(--primary-dark)] font-medium">{isVi ? 'Năm kinh nghiệm' : 'Years of experience'}</div>
-                    </div>
+                  <div className="h-36 rounded-2xl overflow-hidden relative">
+                    <img src="/images/duong-be-tong-nhua.png" alt="Đường bê tông nhựa" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-[var(--primary)]/20" />
                   </div>
-                </div>
+                </div>                    
+
+
                 <div className="space-y-4 pt-8">
                   <div className="h-36 rounded-2xl overflow-hidden relative">
                     <img src="/images/1-Hội trường công ty.JPG" alt="Hội trường công ty" className="w-full h-full object-cover" />

@@ -9,7 +9,7 @@ import type { Banner } from '@duongbo/types'
 const MOCK_BANNERS = [
   { id: 1, image: '/images/hero-1.jpg', titleVi: 'Xây dựng công trình cầu đường chuyên nghiệp', titleEn: 'Professional Bridge & Road Construction', subtitleVi: 'Kiến tạo hạ tầng giao thông bền vững cho tỉnh Gia Lai', subtitleEn: 'Building sustainable transport infrastructure for Gia Lai', link: null, order: 1, page: 'home' },
   { id: 2, image: '/images/hero-2.jpg', titleVi: 'Hơn 30 năm kinh nghiệm xây dựng hạ tầng', titleEn: 'Over 30 years of infrastructure experience', subtitleVi: 'Uy tín - Chất lượng - An toàn - Hiệu quả', subtitleEn: 'Trust - Quality - Safety - Efficiency', link: null, order: 2, page: 'home' },
-  { id: 3, image: '/images/hero-3.jpg', titleVi: 'Công trình tiêu biểu tại Gia Lai', titleEn: 'Notable Projects in Gia Lai', subtitleVi: 'Xây dựng hàng trăm km quốc lộ, tỉnh lộ, cầu và đường địa phương', subtitleEn: 'Building hundreds of km of national roads, provincial roads, bridges and local roads', link: null, order: 3, page: 'home' },
+  { id: 3, image: '/images/hero-3.jpg', titleVi: 'Công trình tiêu biểu tại Gia Lai', titleEn: 'Notable Projects in Gia Lai', subtitleVi: 'Xây dựng hàng trăm Km đường Quốc lộ, Tỉnh lộ, cầu và đường địa phương', subtitleEn: 'Building hundreds of km of national roads, provincial roads, bridges and local roads', link: null, order: 3, page: 'home' },
 ]
 
 export default function HeroSlider({ banners }: { banners?: Banner[] }) {
