@@ -203,7 +203,7 @@ export default async function AboutPage() {
             {/* Director Signing */}
             <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
               <img 
-                src="/images/1-Giám đốc kí duyệt hồ sơ.JPG" 
+                src="/images/ban-lanh-dao.png" 
                 alt="Giám đốc kí duyệt" 
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
               />
