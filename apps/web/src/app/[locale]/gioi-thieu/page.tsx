@@ -271,6 +271,19 @@ export default async function AboutPage() {
               </div>
             </div>
 
+            {/* Director Group */}
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+              <img 
+                src="/images/ban-lanh-dao.png" 
+                alt="Ban lãnh đạo" 
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <h3 className="font-bold">{isVi ? 'Ban lãnh đạo' : 'Management'}</h3>
+              </div>
+            </div>
+
             {/* Conference Hall */}
             <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
               <img 
@@ -320,19 +333,6 @@ export default async function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <h3 className="font-bold">{isVi ? 'Phòng làm việc' : 'Office'}</h3>
-              </div>
-            </div>
-
-            {/* Director Signing */}
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-              <img 
-                src="/images/ban-lanh-dao.png" 
-                alt="Giám đốc kí duyệt" 
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                <h3 className="font-bold">{isVi ? 'Ban lãnh đạo' : 'Management'}</h3>
               </div>
             </div>
 

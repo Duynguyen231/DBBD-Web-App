@@ -8,8 +8,8 @@ import type { Banner } from '@duongbo/types'
 
 const MOCK_BANNERS = [
   { id: 1, image: '/images/anh-cong-ty.png', titleVi: 'Xây dựng công trình cầu đường chuyên nghiệp', titleEn: 'Professional Bridge & Road Construction', subtitleVi: 'Kiến tạo hạ tầng giao thông bền vững cho tỉnh Gia Lai', subtitleEn: 'Building sustainable transport infrastructure for Gia Lai', link: null, order: 1, page: 'home' },
-  { id: 2, image: '/images/hero-2.jpg', titleVi: 'Hơn 30 năm kinh nghiệm xây dựng hạ tầng', titleEn: 'Over 30 years of infrastructure experience', subtitleVi: 'Uy tín - Chất lượng - An toàn - Hiệu quả', subtitleEn: 'Trust - Quality - Safety - Efficiency', link: null, order: 2, page: 'home' },
-  { id: 3, image: '/images/hero-3.jpg', titleVi: 'Công trình tiêu biểu tại Gia Lai', titleEn: 'Notable Projects in Gia Lai', subtitleVi: 'Xây dựng hàng trăm Km đường Quốc lộ, Tỉnh lộ, cầu và đường địa phương', subtitleEn: 'Building hundreds of km of national roads, provincial roads, bridges and local roads', link: null, order: 3, page: 'home' },
+  { id: 2, image: '/images/anh-cong-ty.png', titleVi: 'Hơn 30 năm kinh nghiệm xây dựng hạ tầng', titleEn: 'Over 30 years of infrastructure experience', subtitleVi: 'Uy tín - Chất lượng - An toàn - Hiệu quả', subtitleEn: 'Trust - Quality - Safety - Efficiency', link: null, order: 2, page: 'home' },
+  { id: 3, image: '/images/anh-cong-ty.png', titleVi: 'Công trình tiêu biểu tại Gia Lai', titleEn: 'Notable Projects in Gia Lai', subtitleVi: 'Xây dựng hàng trăm Km đường Quốc lộ, Tỉnh lộ, cầu và đường địa phương', subtitleEn: 'Building hundreds of km of national roads, provincial roads, bridges and local roads', link: null, order: 3, page: 'home' },
 ]
 
 export default function HeroSlider({ banners }: { banners?: Banner[] }) {
@@ -44,12 +44,23 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
           }`}
         >
           {/* Background image with the left-weighted overlay required for readable text. */}
-          <div
+          {/* <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.7) 40%, rgba(13, 30, 70, 0.1) 100%), url('${getImageUrl(slide.image)}')`,
             }}
+          /> */}
+
+          {/* Background image with the left-weighted overlay required for readable text. */}
+          <div
+            className="absolute inset-0 bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.7) 40%, rgba(13, 30, 70, 0.1) 100%), url('${getImageUrl(slide.image)}')`,
+              backgroundSize: 'auto 100%, 75%',
+              backgroundColor: '#0d1e46',
+            }}
           />
+
 
           {/* Content */}
           <div className="relative z-20 h-full flex items-center">
