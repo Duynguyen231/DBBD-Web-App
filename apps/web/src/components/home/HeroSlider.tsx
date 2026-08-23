@@ -110,29 +110,29 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
               isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
           >
-            {/* Background Image - optimized to show more of the full photo */}
-            <div className="absolute inset-0 overflow-hidden">
+            {/* Background Image - 100% full, no crop */}
+            <div className="absolute inset-0 overflow-hidden bg-slate-950">
               <Image
                 src={getImageUrl(slide.image)}
                 alt={title}
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                className={`object-cover object-[center_45%] transition-transform duration-[9000ms] ease-out ${
+                className={`object-contain object-center transition-transform duration-[9000ms] ease-out ${
                   isActive ? 'scale-105' : 'scale-100'
                 }`}
               />
 
-              {/* Soft gradient so the full building stays visible */}
+              {/* Soft gradient overlay for text readability */}
               <div
                 className="absolute inset-0"
                 style={{
                   background: `
                     linear-gradient(
                       to right,
-                      rgba(8, 22, 55, 0.80) 0%,
-                      rgba(8, 22, 55, 0.55) 38%,
-                      rgba(8, 22, 55, 0.25) 68%,
+                      rgba(8, 22, 55, 0.82) 0%,
+                      rgba(8, 22, 55, 0.55) 40%,
+                      rgba(8, 22, 55, 0.25) 70%,
                       rgba(8, 22, 55, 0.08) 100%
                     )
                   `,
