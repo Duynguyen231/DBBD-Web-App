@@ -43,24 +43,34 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
             i === current ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
           }`}
         >
-          {/* Background image with the left-weighted overlay required for readable text. */}
-          {/* <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.7) 40%, rgba(13, 30, 70, 0.1) 100%), url('${getImageUrl(slide.image)}')`,
-            }}
-          /> */}
+          {/* Background layer group */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Blurred fill layer — hides any letterbox gaps */}
+            <div
+              className="absolute inset-0 bg-cover bg-center scale-110"
+              style={{
+                backgroundImage: `url('${getImageUrl(slide.image)}')`,
+                filter: 'blur(40px) brightness(0.6)',
+              }}
+            />
 
-          {/* Background image with the left-weighted overlay required for readable text. */}
-          <div
-            className="absolute inset-0 bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.7) 40%, rgba(13, 30, 70, 0.1) 100%), url('${getImageUrl(slide.image)}')`,
-              backgroundSize: 'auto 100%, 75%',
-              backgroundColor: '#0d1e46',
-            }}
-          />
+            {/* Sharp, fully-visible image — shows the whole building, no cropping */}
+            <div
+              className="absolute inset-0 bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url('${getImageUrl(slide.image)}')`,
+                backgroundSize: 'contain',
+              }}
+            />
 
+            {/* Readability gradient on top of both layers */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.7) 40%, rgba(13, 30, 70, 0.1) 100%)`,
+              }}
+            />
+          </div>
 
           {/* Content */}
           <div className="relative z-20 h-full flex items-center">
