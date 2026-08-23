@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
@@ -51,6 +51,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
 
   const [current, setCurrent] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
   const goTo = useCallback(
     (idx: number) => {
@@ -62,16 +63,42 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
     [isTransitioning]
   )
 
-  const prev = () => goTo((current - 1 + slides.length) % slides.length)
-  const next = useCallback(() => goTo((current + 1) % slides.length), [current, slides.length, goTo])
+  const prev = useCallback(() => {
+    goTo((current - 1 + slides.length) % slides.length)
+  }, [current, slides.length, goTo])
 
+  const next = useCallback(() => {
+    goTo((current + 1) % slides.length)
+  }, [current, slides.length, goTo])
+
+  // Auto-play
   useEffect(() => {
-    const timer = setInterval(next, 6000)
-    return () => clearInterval(timer)
+    intervalRef.current = setInterval(next, 6000)
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
   }, [next])
 
+  // Pause on hover
+  const pause = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+  }
+  const resume = () => {
+    intervalRef.current = setInterval(next, 6000)
+  }
+
   return (
-    <section className="relative h-[550px] md:h-[650px] lg:h-[700px] w-full overflow-hidden bg-slate-950">
+    <section
+      className="relative w-full overflow-hidden bg-slate-950
+                 min-h-[420px] h-[62vh] max-h-[580px]
+                 md:h-[600px] md:max-h-none
+                 lg:h-[680px]"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Hero banner"
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+    >
       {slides.map((slide: any, i: number) => {
         const isActive = i === current
         const title = locale === 'vi' ? slide.titleVi : slide.titleEn || slide.titleVi
@@ -81,11 +108,11 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
           <div
             key={slide.id}
             aria-hidden={!isActive}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-800 ease-out ${
               isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
           >
-            {/* Background Image Layer */}
+            {/* Background Image */}
             <div className="absolute inset-0 overflow-hidden">
               <Image
                 src={getImageUrl(slide.image)}
@@ -93,53 +120,66 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                className={`object-cover object-center transition-transform duration-[8000ms] ease-out ${
+                className={`object-cover object-[center_40%] transition-transform duration-[9000ms] ease-out ${
                   isActive ? 'scale-105' : 'scale-100'
                 }`}
               />
 
-              {/* Dark Gradient Overlay for Text Readability */}
-              <div 
+              {/* Lighter gradient – company building stays clear */}
+              <div
                 className="absolute inset-0"
                 style={{
-                  background: 'linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.75) 45%, rgba(13, 30, 70, 0.1) 100%)'
+                  background: `
+                    linear-gradient(
+                      to right,
+                      rgba(8, 22, 55, 0.78) 0%,
+                      rgba(8, 22, 55, 0.55) 35%,
+                      rgba(8, 22, 55, 0.25) 60%,
+                      rgba(8, 22, 55, 0.08) 100%
+                    )
+                  `,
                 }}
               />
             </div>
 
-            {/* Slide Content */}
+            {/* Content – compact so background is more visible */}
             <div className="relative z-20 h-full flex items-center">
-              <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
+              <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 w-full">
                 <div
-                  className={`max-w-2xl transition-all duration-700 delay-200 ${
-                    isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                  className={`max-w-xl transition-all duration-700 delay-150 ${
+                    isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}
                 >
-                  <span className="inline-block bg-[var(--primary,#1d4ed8)]/90 text-white text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded mb-4 shadow-sm">
+                  {/* Badge */}
+                  <span className="inline-flex items-center bg-blue-600/95 text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 shadow-md">
                     {t('hero_subtitle')}
                   </span>
 
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-md mb-4">
+                  {/* Title */}
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.2] tracking-tight drop-shadow-lg mb-3">
                     {title}
                   </h1>
 
+                  {/* Subtitle */}
                   {subtitle && (
-                    <p className="text-base md:text-lg text-slate-200 mb-8 max-w-xl leading-relaxed drop-shadow">
+                    <p className="text-sm sm:text-base text-slate-100/95 mb-6 max-w-md leading-relaxed drop-shadow">
                       {subtitle}
                     </p>
                   )}
 
+                  {/* CTAs */}
                   <div className="flex flex-wrap gap-3">
                     <Link
                       href={`/${locale}/gioi-thieu`}
-                      className="inline-flex items-center gap-2 bg-[var(--primary,#1d4ed8)] hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                     >
                       {t('view_more')}
                       <ChevronRight className="w-4 h-4" />
                     </Link>
+
                     <Link
                       href={`/${locale}/lien-he`}
-                      className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-lg border border-white/30 transition-all backdrop-blur-sm hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-5 py-2.5 rounded-lg border border-white/30 transition-all backdrop-blur-sm hover:-translate-y-0.5"
                     >
                       {locale === 'vi' ? 'Liên hệ' : 'Contact us'}
                     </Link>
@@ -151,31 +191,47 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
         )
       })}
 
-      {/* Navigation Buttons */}
+      {/* Navigation arrows */}
       <button
         onClick={prev}
+        disabled={isTransitioning}
         aria-label="Previous slide"
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/20 hover:bg-black/40 text-white rounded-full flex items-center justify-center transition-all border border-white/20 backdrop-blur-sm hover:scale-105"
+        className="absolute left-3 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30
+                   w-11 h-11 md:w-12 md:h-12
+                   bg-black/25 hover:bg-black/45 disabled:opacity-40
+                   text-white rounded-full flex items-center justify-center
+                   transition-all border border-white/20 backdrop-blur-sm
+                   hover:scale-105 active:scale-95"
       >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button
-        onClick={() => next()}
-        aria-label="Next slide"
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-black/20 hover:bg-black/40 text-white rounded-full flex items-center justify-center transition-all border border-white/20 backdrop-blur-sm hover:scale-105"
-      >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
       </button>
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+      <button
+        onClick={next}
+        disabled={isTransitioning}
+        aria-label="Next slide"
+        className="absolute right-3 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30
+                   w-11 h-11 md:w-12 md:h-12
+                   bg-black/25 hover:bg-black/45 disabled:opacity-40
+                   text-white rounded-full flex items-center justify-center
+                   transition-all border border-white/20 backdrop-blur-sm
+                   hover:scale-105 active:scale-95"
+      >
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+      </button>
+
+      {/* Indicators */}
+      <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            aria-label={`Slide ${i + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === current ? 'bg-white w-8' : 'bg-white/40 w-2 hover:bg-white/70'
+            aria-label={`Go to slide ${i + 1}`}
+            aria-current={i === current ? 'true' : undefined}
+            className={`h-1.5 rounded-full transition-all duration-400 ${
+              i === current
+                ? 'bg-white w-9 shadow-[0_0_12px_rgba(255,255,255,0.5)]'
+                : 'bg-white/40 w-2.5 hover:bg-white/70'
             }`}
           />
         ))}
