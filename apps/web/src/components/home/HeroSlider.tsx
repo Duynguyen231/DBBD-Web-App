@@ -90,7 +90,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
   return (
     <section
       className="relative w-full overflow-hidden bg-slate-950
-                 h-[380px] sm:h-[440px] md:h-[500px] lg:h-[540px] xl:h-[580px]"
+                 h-[480px] sm:h-[540px] md:h-[600px] lg:h-[660px] xl:h-[720px]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Hero banner"
@@ -110,7 +110,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
               isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
           >
-            {/* Background Image */}
+            {/* Background Image - optimized to show more of the full photo */}
             <div className="absolute inset-0 overflow-hidden">
               <Image
                 src={getImageUrl(slide.image)}
@@ -118,29 +118,29 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                className={`object-cover object-[center_42%] md:object-[center_40%] transition-transform duration-[9000ms] ease-out ${
+                className={`object-cover object-[center_45%] transition-transform duration-[9000ms] ease-out ${
                   isActive ? 'scale-105' : 'scale-100'
                 }`}
               />
 
-              {/* Balanced gradient – building stays clear */}
+              {/* Soft gradient so the full building stays visible */}
               <div
                 className="absolute inset-0"
                 style={{
                   background: `
                     linear-gradient(
                       to right,
-                      rgba(8, 22, 55, 0.82) 0%,
-                      rgba(8, 22, 55, 0.58) 40%,
-                      rgba(8, 22, 55, 0.28) 70%,
-                      rgba(8, 22, 55, 0.1) 100%
+                      rgba(8, 22, 55, 0.80) 0%,
+                      rgba(8, 22, 55, 0.55) 38%,
+                      rgba(8, 22, 55, 0.25) 68%,
+                      rgba(8, 22, 55, 0.08) 100%
                     )
                   `,
                 }}
               />
             </div>
 
-            {/* Content – large text size kept */}
+            {/* Content */}
             <div className="relative z-20 h-full flex items-center">
               <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 w-full">
                 <div
@@ -153,7 +153,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
                     {t('hero_subtitle')}
                   </span>
 
-                  {/* Title – large size */}
+                  {/* Title */}
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.15] tracking-tight drop-shadow-lg mb-4">
                     {title}
                   </h1>
