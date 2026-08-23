@@ -90,9 +90,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
   return (
     <section
       className="relative w-full overflow-hidden bg-slate-950
-                 min-h-[420px] h-[62vh] max-h-[580px]
-                 md:h-[600px] md:max-h-none
-                 lg:h-[680px]"
+                 h-[380px] sm:h-[440px] md:h-[500px] lg:h-[540px] xl:h-[580px]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Hero banner"
@@ -120,49 +118,49 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                className={`object-cover object-[center_40%] transition-transform duration-[9000ms] ease-out ${
+                className={`object-cover object-[center_42%] md:object-[center_40%] transition-transform duration-[9000ms] ease-out ${
                   isActive ? 'scale-105' : 'scale-100'
                 }`}
               />
 
-              {/* Lighter gradient – company building stays clear */}
+              {/* Balanced gradient – building stays clear */}
               <div
                 className="absolute inset-0"
                 style={{
                   background: `
                     linear-gradient(
                       to right,
-                      rgba(8, 22, 55, 0.78) 0%,
-                      rgba(8, 22, 55, 0.55) 35%,
-                      rgba(8, 22, 55, 0.25) 60%,
-                      rgba(8, 22, 55, 0.08) 100%
+                      rgba(8, 22, 55, 0.82) 0%,
+                      rgba(8, 22, 55, 0.58) 40%,
+                      rgba(8, 22, 55, 0.28) 70%,
+                      rgba(8, 22, 55, 0.1) 100%
                     )
                   `,
                 }}
               />
             </div>
 
-            {/* Content – compact so background is more visible */}
+            {/* Content – large text size kept */}
             <div className="relative z-20 h-full flex items-center">
               <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 w-full">
                 <div
-                  className={`max-w-xl transition-all duration-700 delay-150 ${
+                  className={`max-w-2xl transition-all duration-700 delay-150 ${
                     isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                   }`}
                 >
                   {/* Badge */}
-                  <span className="inline-flex items-center bg-blue-600/95 text-white text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 shadow-md">
+                  <span className="inline-flex items-center bg-blue-600/95 text-white text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-4 shadow-md">
                     {t('hero_subtitle')}
                   </span>
 
-                  {/* Title */}
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.2] tracking-tight drop-shadow-lg mb-3">
+                  {/* Title – large size */}
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.15] tracking-tight drop-shadow-lg mb-4">
                     {title}
                   </h1>
 
                   {/* Subtitle */}
                   {subtitle && (
-                    <p className="text-sm sm:text-base text-slate-100/95 mb-6 max-w-md leading-relaxed drop-shadow">
+                    <p className="text-base md:text-lg text-slate-100/95 mb-7 max-w-xl leading-relaxed drop-shadow">
                       {subtitle}
                     </p>
                   )}
@@ -171,7 +169,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
                   <div className="flex flex-wrap gap-3">
                     <Link
                       href={`/${locale}/gioi-thieu`}
-                      className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                     >
                       {t('view_more')}
                       <ChevronRight className="w-4 h-4" />
@@ -179,7 +177,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
 
                     <Link
                       href={`/${locale}/lien-he`}
-                      className="inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white font-semibold text-sm px-5 py-2.5 rounded-lg border border-white/30 transition-all backdrop-blur-sm hover:-translate-y-0.5"
+                      className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-3 rounded-lg border border-white/30 transition-all backdrop-blur-sm hover:-translate-y-0.5"
                     >
                       {locale === 'vi' ? 'Liên hệ' : 'Contact us'}
                     </Link>
@@ -197,13 +195,13 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
         disabled={isTransitioning}
         aria-label="Previous slide"
         className="absolute left-3 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30
-                   w-11 h-11 md:w-12 md:h-12
+                   w-10 h-10 md:w-11 md:h-11
                    bg-black/25 hover:bg-black/45 disabled:opacity-40
                    text-white rounded-full flex items-center justify-center
                    transition-all border border-white/20 backdrop-blur-sm
                    hover:scale-105 active:scale-95"
       >
-        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+        <ChevronLeft className="w-5 h-5" />
       </button>
 
       <button
@@ -211,26 +209,26 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
         disabled={isTransitioning}
         aria-label="Next slide"
         className="absolute right-3 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30
-                   w-11 h-11 md:w-12 md:h-12
+                   w-10 h-10 md:w-11 md:h-11
                    bg-black/25 hover:bg-black/45 disabled:opacity-40
                    text-white rounded-full flex items-center justify-center
                    transition-all border border-white/20 backdrop-blur-sm
                    hover:scale-105 active:scale-95"
       >
-        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+        <ChevronRight className="w-5 h-5" />
       </button>
 
       {/* Indicators */}
-      <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === current ? 'true' : undefined}
-            className={`h-1.5 rounded-full transition-all duration-400 ${
+            className={`h-1.5 rounded-full transition-all duration-300 ${
               i === current
-                ? 'bg-white w-9 shadow-[0_0_12px_rgba(255,255,255,0.5)]'
+                ? 'bg-white w-8 shadow-[0_0_10px_rgba(255,255,255,0.45)]'
                 : 'bg-white/40 w-2.5 hover:bg-white/70'
             }`}
           />
