@@ -7,7 +7,7 @@ import { getImageUrl } from '@/lib/utils'
 import type { Banner } from '@duongbo/types'
 
 const MOCK_BANNERS = [
-  { id: 1, image: '/images/hero-1.jpg', titleVi: 'Xây dựng công trình cầu đường chuyên nghiệp', titleEn: 'Professional Bridge & Road Construction', subtitleVi: 'Kiến tạo hạ tầng giao thông bền vững cho tỉnh Gia Lai', subtitleEn: 'Building sustainable transport infrastructure for Gia Lai', link: null, order: 1, page: 'home' },
+  { id: 1, image: '/images/anh-cong-ty.png', titleVi: 'Xây dựng công trình cầu đường chuyên nghiệp', titleEn: 'Professional Bridge & Road Construction', subtitleVi: 'Kiến tạo hạ tầng giao thông bền vững cho tỉnh Gia Lai', subtitleEn: 'Building sustainable transport infrastructure for Gia Lai', link: null, order: 1, page: 'home' },
   { id: 2, image: '/images/hero-2.jpg', titleVi: 'Hơn 30 năm kinh nghiệm xây dựng hạ tầng', titleEn: 'Over 30 years of infrastructure experience', subtitleVi: 'Uy tín - Chất lượng - An toàn - Hiệu quả', subtitleEn: 'Trust - Quality - Safety - Efficiency', link: null, order: 2, page: 'home' },
   { id: 3, image: '/images/hero-3.jpg', titleVi: 'Công trình tiêu biểu tại Gia Lai', titleEn: 'Notable Projects in Gia Lai', subtitleVi: 'Xây dựng hàng trăm Km đường Quốc lộ, Tỉnh lộ, cầu và đường địa phương', subtitleEn: 'Building hundreds of km of national roads, provincial roads, bridges and local roads', link: null, order: 3, page: 'home' },
 ]
@@ -43,19 +43,18 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
             i === current ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
           }`}
         >
-          {/* Background image */}
+          {/* Background image with the left-weighted overlay required for readable text. */}
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${getImageUrl(slide.image)})` }}
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(13, 30, 70, 0.95) 0%, rgba(13, 30, 70, 0.7) 40%, rgba(13, 30, 70, 0.1) 100%), url('${getImageUrl(slide.image)}')`,
+            }}
           />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
           {/* Content */}
           <div className="relative z-20 h-full flex items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
-              <div className={`max-w-4xl transition-all duration-700 delay-200 ${
+              <div className={`max-w-4xl lg:max-w-[58%] transition-all duration-700 delay-200 ${
                 i === current ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
               }`}>
                 <div className="inline-block bg-[var(--primary)]/90 text-white text-xs font-semibold uppercase tracking-[0.2em] px-4 py-1.5 rounded mb-5">
@@ -69,7 +68,7 @@ export default function HeroSlider({ banners }: { banners?: Banner[] }) {
                     {locale === 'vi' ? slide.subtitleVi : (slide.subtitleEn || slide.subtitleVi)}
                   </p>
                 )}
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   <Link
                     href={`/${locale}/gioi-thieu`}
                     className="inline-flex items-center gap-2 bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-semibold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-xl"
