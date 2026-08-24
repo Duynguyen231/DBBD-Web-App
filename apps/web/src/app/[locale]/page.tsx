@@ -296,7 +296,8 @@ export default async function HomePage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-2"><Calendar className="w-3 h-3" />{formatDate(article.publishedAt, locale)}</div>
-                    <h3 className="font-semibold text-sm text-gray-900 line-clamp-2 group-hover:text-[var(--primary)] transition-colors">{isVi ? article.titleVi : article.titleEn}</h3>
+                    <h3 className="font-semibold text-sm text-gray-900 line-clamp-2 group-hover:text-[var(--primary)] transition-colors mb-1">{isVi ? article.titleVi : article.titleEn}</h3>
+                    <p className="text-xs text-gray-500 line-clamp-2">{isVi ? article.excerptVi : article.excerptEn}</p>
                   </div>
                 </Link>
               ))}

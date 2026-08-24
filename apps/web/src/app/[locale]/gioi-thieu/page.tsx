@@ -56,14 +56,22 @@ export default async function AboutPage() {
               <>
                 Tìm hiểu về lịch sử, sứ mệnh, tầm nhìn và cơ cấu tổ chức của
                 <br />
-                CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH
+                <strong className="font-bold">CÔNG TY CỔ PHẦN QUẢN LÝ VÀ XÂY DỰNG ĐƯỜNG BỘ BÌNH ĐỊNH</strong>
               </>
             ) : (
               'Learn about the history, mission, vision and organizational structure of Gia Lai Road Management & Construction Company'
             )}
           </p>
           <p className="text-base text-blue-100/90 max-w-2xl mt-4">
-            {isVi ? 'Công ty hiện có 2 trạm trộn bê tông nhựa nóng: trạm trộn Bình Đê và trạm trộn Nhơn Hòa.' : 'The company currently operates 2 hot mix asphalt plants: Trạm Bình Đê and Trạm Nhơn Hòa.'}
+            {isVi ? (
+              <>
+                Công ty hiện có 2 trạm trộn bê tông nhựa nóng:
+                <br />
+                trạm trộn Bình Đê và trạm trộn Nhơn Hòa.
+              </>
+            ) : (
+              'The company currently operates 2 hot mix asphalt plants: Trạm Bình Đê and Trạm Nhơn Hòa.'
+            )}
           </p>
         </div>
       </div>
