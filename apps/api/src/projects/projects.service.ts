@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
 import { CreateProjectDto, UpdateProjectDto, ProjectQueryDto } from './dto/project.dto'
+import { toDateOrNull } from '../common/utils/date.util'
 import slugify from 'slugify'
 
 @Injectable()
@@ -37,12 +38,22 @@ export class ProjectsService {
 
   async create(dto: CreateProjectDto) {
     const slug = await this.generateSlug(dto.titleVi)
-    return this.prisma.project.create({ data: { ...dto, slug } })
+    return this.prisma.project.create({
+      data: {
+        ...dto,
+        startDate: toDateOrNull(dto.startDate),
+        endDate: toDateOrNull(dto.endDate),
+        slug,
+      },
+    })
   }
 
   async update(id: number, dto: UpdateProjectDto) {
     await this.findById(id)
-    return this.prisma.project.update({ where: { id }, data: dto })
+    return this.prisma.project.update({
+      where: { id },
+      data: { ...dto, startDate: toDateOrNull(dto.startDate), endDate: toDateOrNull(dto.endDate) },
+    })
   }
 
   async remove(id: number) {

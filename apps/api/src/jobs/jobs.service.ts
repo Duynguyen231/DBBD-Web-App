@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from '../prisma/prisma.service'
 import { CreateJobDto, UpdateJobDto, JobQueryDto } from './dto/job.dto'
+import { toDateOrNull } from '../common/utils/date.util'
 import slugify from 'slugify'
 
 @Injectable()
@@ -42,7 +43,7 @@ export class JobsService {
     return this.prisma.job.create({
       data: {
         ...dto,
-        deadline: dto.deadline ? new Date(`${dto.deadline}T00:00:00Z`) : null,
+        deadline: toDateOrNull(dto.deadline),
         slug,
       },
     })
@@ -51,7 +52,10 @@ export class JobsService {
 
   async update(id: number, dto: UpdateJobDto) {
     await this.findById(id)
-    return this.prisma.job.update({ where: { id }, data: dto })
+    return this.prisma.job.update({
+      where: { id },
+      data: { ...dto, deadline: toDateOrNull(dto.deadline) },
+    })
   }
 
   async remove(id: number) {
