@@ -1,5 +1,6 @@
 import { Module, OnModuleInit } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
+import { ThrottlerModule } from '@nestjs/throttler'
 import { PrismaModule } from './prisma/prisma.module'
 import { AuthModule } from './auth/auth.module'
 import { NewsModule } from './news/news.module'
@@ -42,6 +43,9 @@ const validateEnv = (config: Record<string, unknown>) => {
     ConfigModule.forRoot({
       isGlobal: true,
       validate: validateEnv,
+    }),
+    ThrottlerModule.forRoot({
+      throttlers: [{ name: 'default', ttl: 60_000, limit: 20 }],
     }),
     PrismaModule,
     AuthModule,

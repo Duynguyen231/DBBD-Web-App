@@ -9,6 +9,10 @@ export async function createNestApp(adapter?: ExpressAdapter): Promise<INestAppl
     ? await NestFactory.create(AppModule, adapter)
     : await NestFactory.create(AppModule)
 
+  // Running behind Vercel's proxy: trust X-Forwarded-For so req.ip reflects
+  // the real client IP (needed for per-IP rate limiting on /contact).
+  app.getHttpAdapter().getInstance().set('trust proxy', 1)
+
   app.enableCors({
     origin:
       process.env.CORS_ORIGIN ||

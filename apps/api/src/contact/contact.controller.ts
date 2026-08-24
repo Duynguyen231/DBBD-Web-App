@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards, ParseIntPipe } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger'
+import { Throttle, ThrottlerGuard } from '@nestjs/throttler'
 import { ContactService } from './contact.service'
 import { CreateContactDto } from './dto/contact.dto'
 
@@ -10,6 +11,8 @@ export class ContactController {
   constructor(private service: ContactService) {}
 
   @Post()
+  @UseGuards(ThrottlerGuard)
+  @Throttle({ default: { limit: 5, ttl: 600_000 } })
   create(@Body() dto: CreateContactDto) { return this.service.create(dto) }
 
   @Get()
