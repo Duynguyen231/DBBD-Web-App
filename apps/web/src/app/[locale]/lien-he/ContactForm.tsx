@@ -160,7 +160,7 @@ export default function ContactForm() {
 
         {/* Map */}
         <a
-          href="https://www.google.com/maps/search/?api=1&query=13.787171953556392,109.1597619340228"
+          href="https://maps.app.goo.gl/1ggRAhST4Mis6XYF9"
           target="_blank"
           rel="noopener noreferrer"
           className="block mt-10 rounded-2xl overflow-hidden shadow-lg border border-gray-200 relative group"
