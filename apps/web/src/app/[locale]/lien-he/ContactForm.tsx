@@ -160,13 +160,13 @@ export default function ContactForm() {
 
         {/* Map */}
         <a
-          href="https://www.google.com/maps/place/Q5P5%2BRWC,+Long+V%C3%A2n+-+Long+M%E1%BB%B9,+Tr%E1%BA%A7n+Quang+Di%E1%BB%87u,+Quy+Nh%C6%A1n+B%E1%BA%AFc,+Gia+Lai,+Vi%E1%BB%87t+Nam"
+          href="https://www.google.com/maps/search/?api=1&query=13.787171953556392,109.1597619340228"
           target="_blank"
           rel="noopener noreferrer"
           className="block mt-10 rounded-2xl overflow-hidden shadow-lg border border-gray-200 relative group"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1937.7!2d109.2187!3d13.7898!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ3JzIzLjMiTiAxMDnCsDEzJzA3LjMiRQ!5e0!3m2!1svi!2svn!4v1700000000000!5m2!1svi!2svn"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242.17889520108204!2d109.1597619340228!3d13.787171953556392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f130005ea11f9%3A0x20a7e8f043eda9d6!2zQ8O0bmcgdHkgQ1AgUUwmWEQgxJDGsOG7nW5nIGLhu5kgQsOsbmggxJDhu4tuaA!5e0!3m2!1sen!2s!4v1788441712554!5m2!1sen!2s"
             width="100%"
             height="350"
             style={{ border: 0, pointerEvents: 'none' }}
