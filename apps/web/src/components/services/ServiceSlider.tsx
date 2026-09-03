@@ -26,9 +26,8 @@ export default function ServiceSlider({ services, isVi }: ServiceSliderProps) {
   const totalPages = Math.ceil(services.length / itemsPerPage)
   const showSlider = services.length > itemsPerPage
 
-  const currentServices = services.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
+  const pages = Array.from({ length: totalPages }, (_, i) =>
+    services.slice(i * itemsPerPage, (i + 1) * itemsPerPage)
   )
 
   const nextPage = () => {
@@ -43,50 +42,66 @@ export default function ServiceSlider({ services, isVi }: ServiceSliderProps) {
     if (!showSlider) return
     const interval = setInterval(nextPage, 8000)
     return () => clearInterval(interval)
-  }, [currentPage, showSlider])
+  }, [totalPages, showSlider])
 
   return (
     <div className="relative">
-      <div className="space-y-20">
-        {currentServices.map((service, idx) => {
-          const Icon = ICONS[idx % ICONS.length]
-          const isReversed = idx % 2 === 1
-          const globalIdx = currentPage * itemsPerPage + idx
+      <div className="grid">
+        {pages.map((pageServices, pageIdx) => {
+          const isActive = pageIdx === currentPage
 
           return (
-            <div key={service.id} className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Text */}
-              <div className={isReversed ? 'md:order-2' : ''}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-[var(--primary-50)] rounded-xl flex items-center justify-center shrink-0">
-                    <Icon className="w-6 h-6 text-[var(--primary)]" />
-                  </div>
-                  <span className="text-[var(--primary)] font-semibold text-sm uppercase tracking-wider">
-                    {isVi ? 'Lĩnh vực' : 'Service'} {String(globalIdx + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                  {isVi ? service.titleVi : service.titleEn}
-                </h2>
-                <p className="text-gray-600 leading-relaxed text-[15px]">
-                  {isVi ? service.descVi : service.descEn}
-                </p>
-              </div>
+            <div
+              key={pageIdx}
+              className={`col-start-1 row-start-1 space-y-20 transition-opacity duration-300 ${
+                isActive ? 'opacity-100' : 'pointer-events-none opacity-0'
+              }`}
+              aria-hidden={!isActive}
+              inert={!isActive}
+            >
+              {pageServices.map((service, idx) => {
+                const Icon = ICONS[idx % ICONS.length]
+                const isReversed = idx % 2 === 1
+                const globalIdx = pageIdx * itemsPerPage + idx
 
-              {/* Image */}
-              <div className={`rounded-2xl overflow-hidden shadow-lg group ${isReversed ? 'md:order-1' : ''}`}>
-                {service.image ? (
-                  <img 
-                    src={getImageUrl(service.image)} 
-                    alt={isVi ? service.titleVi : service.titleEn} 
-                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" 
-                  />
-                ) : (
-                  <div className="w-full h-72 bg-gradient-to-br from-[var(--primary-50)] to-[var(--primary-100)] flex items-center justify-center">
-                    <Icon className="w-20 h-20 text-[var(--primary)] opacity-30" />
+                return (
+                  <div key={service.id} className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Text */}
+                    <div className={isReversed ? 'md:order-2' : ''}>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-12 h-12 bg-[var(--primary-50)] rounded-xl flex items-center justify-center shrink-0">
+                          <Icon className="w-6 h-6 text-[var(--primary)]" />
+                        </div>
+                        <span className="text-[var(--primary)] font-semibold text-sm uppercase tracking-wider">
+                          {isVi ? 'Lĩnh vực' : 'Service'} {String(globalIdx + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                        {isVi ? service.titleVi : service.titleEn}
+                      </h2>
+                      <p className="text-gray-600 leading-relaxed text-[15px]">
+                        {isVi ? service.descVi : service.descEn}
+                      </p>
+                    </div>
+
+                    {/* Image */}
+                    <div className={`rounded-2xl overflow-hidden shadow-lg group ${isReversed ? 'md:order-1' : ''}`}>
+                      {service.image ? (
+                        <img
+                          src={getImageUrl(service.image)}
+                          alt={isVi ? service.titleVi : service.titleEn}
+                          loading="lazy"
+                          className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-72 bg-gradient-to-br from-[var(--primary-50)] to-[var(--primary-100)] flex items-center justify-center">
+                          <Icon className="w-20 h-20 text-[var(--primary)] opacity-30" />
+                        </div>
+                      )}
+                    </div>
                   </div>
-                )}
-              </div>
+                )
+              })}
             </div>
           )
         })}
@@ -97,6 +112,7 @@ export default function ServiceSlider({ services, isVi }: ServiceSliderProps) {
         <div className="mt-16">
           <div className="flex items-center justify-center gap-6">
             <button
+              type="button"
               onClick={prevPage}
               className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[var(--primary)] hover:shadow-xl transition-all border border-gray-200"
               aria-label={isVi ? 'Trước' : 'Previous'}
@@ -107,6 +123,7 @@ export default function ServiceSlider({ services, isVi }: ServiceSliderProps) {
             <div className="flex items-center gap-2">
               {Array.from({ length: totalPages }).map((_, idx) => (
                 <button
+                  type="button"
                   key={idx}
                   onClick={() => setCurrentPage(idx)}
                   className={`transition-all ${
@@ -120,6 +137,7 @@ export default function ServiceSlider({ services, isVi }: ServiceSliderProps) {
             </div>
 
             <button
+              type="button"
               onClick={nextPage}
               className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[var(--primary)] hover:shadow-xl transition-all border border-gray-200"
               aria-label={isVi ? 'Sau' : 'Next'}
@@ -128,7 +146,7 @@ export default function ServiceSlider({ services, isVi }: ServiceSliderProps) {
             </button>
           </div>
 
-          <p className="text-center mt-4 text-sm text-gray-500">
+          <p className="text-center mt-4 text-sm text-gray-500" aria-live="polite">
             {isVi ? 'Trang' : 'Page'} {currentPage + 1} / {totalPages}
           </p>
         </div>
