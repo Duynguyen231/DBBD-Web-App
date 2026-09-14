@@ -94,6 +94,13 @@ JWT_SECRET="GENERATE_A_STRONG_RANDOM_SECRET"
 JWT_EXPIRES_IN="7d"
 PORT=4000
 FRONTEND_URL="https://duongbobinhdinh.vn"
+
+# Contact form email notifications (Gmail SMTP) — without these, MailService
+# silently disables itself and contact submissions save but no email is sent
+SMTP_USER="your-gmail-address@gmail.com"
+SMTP_APP_PASSWORD="16-char-google-app-password"
+MAIL_FROM="Website Contact <your-gmail-address@gmail.com>"
+CONTACT_NOTIFY_TO="real-inbox-to-receive-notifications@example.com"
 ```
 
 Create `apps/web/.env.local`:
@@ -260,6 +267,10 @@ services:
       JWT_EXPIRES_IN: 7d
       PORT: 4000
       FRONTEND_URL: https://duongbobinhdinh.vn
+      SMTP_USER: ${SMTP_USER}
+      SMTP_APP_PASSWORD: ${SMTP_APP_PASSWORD}
+      MAIL_FROM: ${MAIL_FROM}
+      CONTACT_NOTIFY_TO: ${CONTACT_NOTIFY_TO}
     volumes:
       - uploads:/app/uploads
     depends_on:

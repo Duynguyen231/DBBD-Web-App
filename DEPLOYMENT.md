@@ -95,6 +95,12 @@ pnpm build
    FRONTEND_URL=https://your-domain.vercel.app
    UPLOAD_DIR=uploads
    MAX_FILE_SIZE=10485760
+
+   # Contact form email notifications (see "Contact Form Email" section below)
+   SMTP_USER=<your-gmail-address>
+   SMTP_APP_PASSWORD=<gmail-app-password>
+   MAIL_FROM="Website Contact <your-gmail-address>"
+   CONTACT_NOTIFY_TO=<real-inbox-to-receive-notifications>
    ```
 
 4. **Run Prisma Migrations**
@@ -102,6 +108,41 @@ pnpm build
    # In Railway service settings, add one-time command:
    npx prisma generate && npx prisma db push
    ```
+
+---
+
+### Option 1b: Vercel (Frontend) + Vercel (Backend/API as serverless) — Current Production Setup
+
+**Note:** this is how the API is actually deployed in production for this project (as of this writing), instead of Railway. NestJS apps are not natively serverless-friendly, so getting this working on Vercel requires a few non-obvious pieces:
+
+1. **Serverless entrypoint**: `apps/api/api/index.ts` bootstraps the Nest app on a shared Express instance and exports a plain `(req, res)` handler:
+   ```ts
+   export default async function handler(req: IncomingMessage, res: ServerResponse) {
+     if (!cachedApp) {
+       cachedApp = await bootstrap() // returns the Express app instance
+     }
+     cachedApp(req, res)
+   }
+   ```
+   Call the Express app directly — do **not** wrap it with a Lambda-event adapter like `@vendia/serverless-express` or `serverless-http`. Vercel's Node.js runtime invokes functions with a real `(req, res)` pair, not an AWS Lambda `event`/`context`, so a Lambda-shim throws `Unable to determine event source based on event` at runtime.
+
+2. **`apps/api/vercel.json`** must look like this:
+   ```json
+   {
+     "framework": null,
+     "buildCommand": "prisma generate",
+     "outputDirectory": "public",
+     "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+   }
+   ```
+   - `"framework": null` — required. Vercel auto-detects "Nest.js" purely from the `@nestjs/core` dependency and tries to wrap `src/main.ts` directly as the entrypoint, which fails (`No entrypoint found which imports nestjs`) unless `main.ts` itself contains a direct `@nestjs/*` import. Setting `framework: null` disables this auto-detection and routes traffic through the `api/index.ts` handler above instead.
+   - `"buildCommand": "prisma generate"` — deliberately skips `nest build`. The deployed function is bundled straight from `src/` (see `api/index.ts`), so `nest build`'s `dist/` output is never used; only `prisma generate` is needed before the function is bundled (Prisma Client generation also runs via the `postinstall` script, but explicit here as a safety net).
+   - `"outputDirectory": "public"` — with `framework: null`, Vercel falls back to expecting a static site output folder and fails with `No Output Directory named "public" found` if one doesn't exist. This project has no static output, so a placeholder file (`apps/api/public/.gitkeep`) is checked in just to satisfy the check.
+   - In the Vercel dashboard, also confirm **Project Settings → General → Framework Preset** is set to **Other** — a dashboard override can persist independently of `vercel.json` and silently defeat it.
+
+3. **Environment Variables** — same list as the Railway block above (`DATABASE_URL`, `JWT_SECRET`, etc., plus the mail vars), set in Vercel Project Settings → Environment Variables for both Production and Preview.
+
+4. Vercel build logs may show `error TS2339` diagnostics referencing Prisma models or `S3Client` — these come from an isolated, informational type-check pass over the pnpm-nested `node_modules` layout and do not affect the deployed code (which is transpiled per-file without type-checking). Safe to ignore.
 
 ---
 
@@ -653,6 +694,12 @@ PORT=4000
 FRONTEND_URL=https://your-domain.vercel.app
 UPLOAD_DIR=uploads
 MAX_FILE_SIZE=10485760
+
+# Contact form email notifications (see "Contact Form Email" section below)
+SMTP_USER=<your-gmail-address>
+SMTP_APP_PASSWORD=<gmail-app-password>
+MAIL_FROM="Website Contact <your-gmail-address>"
+CONTACT_NOTIFY_TO=<real-inbox-to-receive-notifications>
 ```
 
 **Settings:**
@@ -727,7 +774,15 @@ FRONTEND_URL="https://yourdomain.com"
 # File Upload
 UPLOAD_DIR="uploads"
 MAX_FILE_SIZE=10485760
+
+# Contact form email notifications (Gmail SMTP)
+SMTP_USER="your-gmail-address@gmail.com"
+SMTP_APP_PASSWORD="16-char-google-app-password"
+MAIL_FROM="Website Contact <your-gmail-address@gmail.com>"
+CONTACT_NOTIFY_TO="real-inbox-to-receive-notifications@example.com"
 ```
+
+> **Contact Form Email**: if `SMTP_USER`, `SMTP_APP_PASSWORD`, or `CONTACT_NOTIFY_TO` are missing, `MailService` silently disables itself at startup (logs a warning, no error) and contact form submissions will save to the database but never send a notification email — the site visitor still sees a success message either way. `SMTP_APP_PASSWORD` must be a Google **App Password** (https://myaccount.google.com/apppasswords), not the account's normal login password, and requires 2-Step Verification enabled on that Google account. After changing these vars on any host, redeploy/restart the API — they're only read once at process startup.
 
 ### Frontend (Web) - Required
 
