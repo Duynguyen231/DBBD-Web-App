@@ -1,24 +1,21 @@
 import 'reflect-metadata'
 import type { IncomingMessage, ServerResponse } from 'http'
-import express from 'express'
-import serverlessExpress from '@vendia/serverless-express'
+import express, { type Express } from 'express'
 import { ExpressAdapter } from '@nestjs/platform-express'
 import { createNestApp } from '../src/app.factory'
 
-type ServerlessHandler = (req: IncomingMessage, res: ServerResponse) => void
+let cachedApp: Express | undefined
 
-let cachedHandler: ServerlessHandler | undefined
-
-async function bootstrapServerless(): Promise<ServerlessHandler> {
+async function bootstrap(): Promise<Express> {
   const expressApp = express()
   const app = await createNestApp(new ExpressAdapter(expressApp))
   await app.init()
-  return serverlessExpress({ app: expressApp })
+  return expressApp
 }
 
 export default async function handler(req: IncomingMessage, res: ServerResponse) {
-  if (!cachedHandler) {
-    cachedHandler = await bootstrapServerless()
+  if (!cachedApp) {
+    cachedApp = await bootstrap()
   }
-  return cachedHandler(req, res)
+  cachedApp(req, res)
 }
